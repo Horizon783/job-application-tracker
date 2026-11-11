@@ -23,7 +23,7 @@ The Job Application Tracker runs in the user's web browser.
 The React application uses the browser's LocalStorage API
 to persist job application data locally between sessions.
 
-![Application Environment](./assets/application-environment.png)
+![Application Environment](./src/assets/application-environment.png)
 
 ## How to install this learning project
 
