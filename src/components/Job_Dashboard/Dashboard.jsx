@@ -6,13 +6,13 @@ const Dashboard = function({jobs, onStatusChange, onDelJob}){
     
     "company",
     "Position",
-    "status",
     "Application_Date",
     "Salary",
     "Next_Action",
     "Website",
     "Contact",
-    "Ref_Link"
+    "Ref_Link",
+    "status"
     ];
     return(
         <div className="dashboard">

@@ -1,15 +1,30 @@
 import { useEffect, useState } from "react";
-import data from './data/sample_data';
+
 
 import './App.css'
 import Dashboard from './components/Job_Dashboard/Dashboard';
 import InputJob from './components/Input_Job/InputJob';
 function App() {
+
   const key = "JobApplications"
-  const [jobs, setJobs] = useState(()=>{
-    const stored = localStorage.getItem(key);
-    return stored ? JSON.parse(stored): data
-  });
+  function loadJobs() {
+    try {
+        const stored = localStorage.getItem(key);
+
+        if (stored === null) {
+            return [];
+        }
+
+        const parsed = JSON.parse(stored);
+
+        return Array.isArray(parsed) ? parsed : [];
+
+      } catch (error) {
+        console.error("Unable to load saved applications:", error);
+        return [];
+      }
+  }
+  const [jobs, setJobs] = useState(loadJobs);
 
   useEffect(()=>{
     localStorage.setItem(key, JSON.stringify(jobs))
