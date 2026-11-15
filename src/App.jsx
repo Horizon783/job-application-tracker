@@ -50,9 +50,18 @@ function App() {
   }
 
   return(
-    <div>
-      <Dashboard jobs={jobs} onStatusChange={handleStatusChange} onDelJob={handleDelJob}/>
-      <InputJob onAdd={handleAddJob}/>
+    <div className="min-h-screen bg-slate-50 text-slate-900">
+      <header className="border-b border-slate-200 bg-white">
+        <div className="mx-auto max-w-7xl px-6 py-8">
+          <h1 className="text-3xl font-bold tracking-tight">Job Application Tracker</h1>
+          <p className="mt-2 text-slate-600">Organize and track your job applications.</p>
+        </div>
+      </header>
+      <main className="mx-auto flex max-w-7xl flex-col gap-8 px-6 py-8">
+        <Dashboard jobs={jobs} onStatusChange={handleStatusChange} onDelJob={handleDelJob}/>
+        <InputJob onAdd={handleAddJob}/>
+      </main>
+
     </div>
   );
 }
