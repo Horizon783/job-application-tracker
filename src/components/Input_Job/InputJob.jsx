@@ -53,12 +53,22 @@ const InputJob = function({onAdd}){
 
     }
     return(
-        <form className="flex flex-wrap justify-center gap-2.5 m-2" onSubmit={handleSubmit}>
-            {fields.map(({name, label, type, required})=>(
+        <form className="w-full rounded-xl border border-slate-200 bg-white p-6 shadow-sm" onSubmit={handleSubmit}>
+            <h2 className="mb-6 text-xl font-semibold text-slate-900">
+                Add New Application
+            </h2>
+            <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+                {fields.map(({name, label, type, required})=>(
                 (type === "select")?
-                <div key={name}>
-                    <label htmlFor={name}>{label}</label>
-                    <select name={name} id={name} className="border-2" value={job[name]} onChange={handleChange}>
+                <div key={name} className="flex flex-col gap-2">
+                    <label htmlFor={name} className="text-sm font-medium text-slate-700">{label}</label>
+                    <select
+                        name={name} 
+                        id={name} 
+                        className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+                        value={job[name]} 
+                        onChange={handleChange}
+                        >
                         <option value="">--Application Status--</option>
                         <option value="Applied">Applied</option>
                         <option value="Interviewed">Interviwed</option>
@@ -68,8 +78,8 @@ const InputJob = function({onAdd}){
                     </select>
                 </div>
                 :
-                <div key={name}>
-                    <label htmlFor={name}>{label}</label>
+                <div key={name} className="flex flex-col gap-2">
+                    <label htmlFor={name} className="text-sm font-medium text-slate-700">{label}</label>
                     <input
                         id={name}
                         name={name}
@@ -77,16 +87,21 @@ const InputJob = function({onAdd}){
                         value={job[name]}
                         onChange={handleChange}
                         required={required ?? false}
-                        className="p-1 border-2"
+                        className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
                     />
                 </div>
-            ))}
-            <button
-                type="submit"
-                className="p-1 border-2 rounded-xl"
-            >
-                Add application
-            </button>
+                ))}
+
+            </div>
+                <div className="mt-6 flex justify-end">
+                    <button
+                    type="submit"
+                    className="p-1 border-2 rounded-xl"
+                    >
+                        Add application
+                    </button>
+                </div>
+
         </form>
     );
 }
