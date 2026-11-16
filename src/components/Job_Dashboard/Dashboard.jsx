@@ -17,7 +17,16 @@ const Dashboard = function({jobs, onStatusChange, onDelJob}){
     return(
         <div className="dashboard w-full overflow-x-auto rounded-xl border border-slate-200 bg-white shadow-sm">
             {
-                jobs.length === 0 ? (<p>There are no jobs you Applied for.</p>):
+                jobs.length === 0 ? 
+                (<div className="px-6 py-12 text-center">
+                    <h3 className="text-lg font-semibold text-slate-800">
+                        No applications yet
+                    </h3>
+                    <p className="mt-2 text-sm text-slate-500">
+                        Start tracking your job search by adding your first application below.
+                    </p>
+                </div>)
+                :
                 (<table className="w-full min-w-[950px] border-collapse text-left text-sm">
                 <thead>
                     <tr>
