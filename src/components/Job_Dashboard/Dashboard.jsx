@@ -33,7 +33,7 @@ const Dashboard = function({jobs, onStatusChange, onDelJob}){
                                 <select className="rounded-md border border-slate-300 bg-white px-2 py-1.5 text-sm focus:border-blue-500 focus:outline-none" value={jobObj["status"]} onChange={(e)=> onStatusChange(jobObj.id, e.target.value )}>
                                     <option value="">--Application Status--</option>
                                     <option value="Applied">Applied</option>
-                                    <option value="Interviewed">Interviwed</option>
+                                    <option value="Interviewed">Interviewed</option>
                                     <option value="Selected">Selected</option>
                                     <option value="Offered">Offered</option>
                                     <option value="Rejected">Rejected</option>

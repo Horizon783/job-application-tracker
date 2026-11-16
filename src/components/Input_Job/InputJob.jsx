@@ -71,7 +71,7 @@ const InputJob = function({onAdd}){
                         >
                         <option value="">--Application Status--</option>
                         <option value="Applied">Applied</option>
-                        <option value="Interviewed">Interviwed</option>
+                        <option value="Interviewed">Interviewed</option>
                         <option value="Selected">Selected</option>
                         <option value="Offered">Offered</option>
                         <option value="Rejected">Rejected</option>
@@ -96,7 +96,7 @@ const InputJob = function({onAdd}){
                 <div className="mt-6 flex justify-end">
                     <button
                     type="submit"
-                    className="p-1 border-2 rounded-xl"
+                    className="rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-blue-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
                     >
                         Add application
                     </button>

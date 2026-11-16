@@ -5,6 +5,9 @@ A client-side web application built with React to manage and track job applicati
 
 This project was built as a hands-on exercise to understand React fundamentals, component communication, state management, CRUD operations, and browser-based data persistence.
 
+## Application Screenshot
+![Job Application Tracker Dashboard](./src/assets/application-preview.png)
+
 ## Features
 
 - **Add Applications:** Create new job application records with details such as company, position, application date, salary, and contact information.
@@ -14,12 +17,6 @@ This project was built as a hands-on exercise to understand React fundamentals, 
 - **Empty State:** Display an appropriate message when there are no applications.
 - **Data Persistence:** Retain application records across browser refreshes using the browser's LocalStorage API.
 
-## Application Environment
-
-The application runs entirely in the user's web browser. React manages the application interface and state, while LocalStorage is used to save and retrieve application data.
-
-![Application Environment](./src/assets/application-environment.png)
-
 ## Tech Stack
 
 - **Frontend:** React
@@ -27,6 +24,14 @@ The application runs entirely in the user's web browser. React manages the appli
 - **Build Tool:** Vite
 - **Styling:** Tailwind CSS
 - **Browser Storage:** LocalStorage
+
+
+## Application Environment
+
+The application runs entirely in the user's web browser. React manages the application interface and state, while LocalStorage is used to save and retrieve application data.
+
+![Application Environment](./src/assets/application-environment.png)
+
 
 ## Getting Started
 
@@ -148,17 +153,27 @@ The application uses lazy initialization to retrieve previously
 saved job applications from LocalStorage.
 
 Instead of passing the result of a function directly to useState,
-a function is passed as the initializer.
+a function loadJobs is passed as the initializer.
 
 This allows the initialization logic to run when React initializes
 the state, rather than evaluating the LocalStorage read on every
 component render.
 
 ```jsx
-const [jobs, setJobs] = useState(() => {
-    const stored = localStorage.getItem("JobApplications");
-    return stored ? JSON.parse(stored) : data;
-});
+function loadJobs() {
+    try {
+        const stored = localStorage.getItem("JobApplications");
+
+        if (stored === null) return [];
+
+        const parsed = JSON.parse(stored);
+        return Array.isArray(parsed) ? parsed : [];
+    } catch {
+        return [];
+    }
+}
+
+const [jobs, setJobs] = useState(loadJobs);
 ```
 
 **Further reading:**
@@ -188,3 +203,16 @@ Dashboard receives the data and update callbacks through props,
 while InputJob receives a callback to submit new applications.
 
 This keeps a single source of truth for application records.
+
+## Contributing
+
+Suggestions, bug reports, and contributions are welcome.
+
+To contribute:
+
+1. Check the existing issues or open a new issue describing your proposed change.
+2. Fork the repository and create a dedicated branch.
+3. Make your changes and verify that the application works.
+4. Submit a pull request explaining what you changed and why.
+
+For major changes, please open an issue first to discuss the proposed approach.
